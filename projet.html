@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ENSTA Algiers – National Higher School of Advanced Technology</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f7fb;
+      color: #222;
+    }
+
+    header {
+      background-color: #002f6c;
+      color: white;
+      text-align: center;
+      padding: 30px 10px;
+    }
+
+    header img.logo {
+      max-width: 160px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.3em;
+    }
+
+    header p.subtitle {
+      margin: 8px 0 0;
+      font-size: 1.2em;
+      font-style: italic;
+    }
+
+    nav {
+      background-color: #004c99;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      padding: 14px 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    nav a.active, nav a:hover {
+      background-color: #003366;
+    }
+
+    section {
+      display: none;
+      padding: 30px;
+      max-width: 950px;
+      margin: 30px auto;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    section.active {
+      display: block;
+    }
+
+    section h2 {
+      color: #004c99;
+      margin-top: 0;
+    }
+
+    .program-box {
+      background-color: #f0f4ff;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 10px 0;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .program-box:hover {
+      background-color: #e1ecff;
+    }
+
+    .details {
+      display: none;
+      margin-top: 15px;
+      background-color: #fafcff;
+      border-left: 4px solid #004c99;
+      padding: 15px;
+      border-radius: 6px;
+    }
+
+    .club-logos {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .club-logos img {
+      max-width: 120px;
+      height: auto;
+      transition: transform 0.2s;
+    }
+
+    .club-logos img:hover {
+      transform: scale(1.1);
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .testimonial {
+      background: #e9f3ff;
+      border-left: 5px solid #004c99;
+      padding: 15px 20px;
+      border-radius: 8px;
+    }
+
+    .testimonial p {
+      font-style: italic;
+    }
+
+    .testimonial strong {
+      display: block;
+      margin-top: 8px;
+      text-align: right;
+    }
+
+    footer {
+      text-align: center;
+      background-color: #002f6c;
+      color: white;
+      padding: 15px;
+      font-size: 0.9em;
+    }
+
+    footer a {
+      color: #aee0ff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .map-container {
+      margin-top: 20px;
+    }
+
+    /* Research Section Styles */
+    .research-intro {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 1.1em;
+      color: #555;
+    }
+
+    .research-domains {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+
+    .domain-card {
+      background: white;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border-top: 4px solid #004c99;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .domain-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .domain-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .domain-title {
+      color: #004c99;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 1.4em;
+    }
+
+    .domain-description {
+      color: #555;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+
+    .projects-list {
+      list-style: none;
+      padding: 0;
+      margin: 15px 0;
+    }
+
+    .projects-list li {
+      padding: 6px 0;
+      border-bottom: 1px solid #f0f0f0;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .projects-list li:before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: #004c99;
+    }
+
+    .research-btn {
+      display: inline-block;
+      background: #004c99;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 10px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .research-btn:hover {
+      background: #003366;
+    }
+
+    .research-achievements {
+      background: #002f6c;
+      color: white;
+      padding: 40px 30px;
+      border-radius: 10px;
+      margin-bottom: 40px;
+    }
+
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      text-align: center;
+    }
+
+    .achievement-item h3 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #4da6ff;
+    }
+
+    .research-teams {
+      margin-bottom: 40px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .team-member {
+      text-align: center;
+      background: #f8fbff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .member-photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 0 auto 15px;
+      background: #e0e0e0;
+      overflow: hidden;
+    }
+
+    .member-name {
+      font-weight: bold;
+      color: #004c99;
+      margin-bottom: 5px;
+    }
+
+    .member-role {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .research-news {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .news-item {
+      padding: 20px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .news-item:last-child {
+      border-bottom: none;
+    }
+
+    .news-date {
+      color: #004c99;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    @media (max-width: 768px) {
+      .research-domains {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img class="logo" src="images/enstapng.png" alt="ENSTA Algiers Logo">
+    <h1>ENSTA Algiers</h1>
+    <p class="subtitle">National Higher School of Advanced Technology</p>
+  </header>
+
+  <nav>
+    <a href="#" class="active" onclick="showSection('home', this)">Home</a>
+    <a href="#" onclick="showSection('programs', this)">Programs</a>
+    <a href="#" onclick="showSection('research', this)">Research & Innovation</a>
+    <a href="#" onclick="showSection('student', this)">Student Life</a>
+    <a href="#" onclick="showSection('admissions', this)">Admissions</a>
+    <a href="#" onclick="showSection('contact', this)">Contact</a>
+    <a href="#" onclick="showSection('testimonials', this)">Testimonials</a>
+  </nav>
+
+  <!-- Home -->
+  <section id="home" class="active">
+    <h2>Welcome to ENSTA Algiers</h2>
+    <p>The<strong> National Higher School of Advanced Technologies (ENSTA)</strong> was established under Executive Decree No. 22-314 of September 12, 2022, published in the Official Journal No. 78.
+
+In the same issue, Executive Decree No. 22-398 of November 21, 2022 announced the dissolution of <strong>the National Higher School of Technology </strong>and <strong>the Higher School of Applied Sciences of Algiers</strong>, with the transfer of their assets, rights, obligations, staff, and resources to<strong> ENSTA</strong>.
+
+<strong>ENSTA </strong>is a public institution of a scientific, cultural, and professional nature, endowed with legal personality and financial autonomy.
+
+Its mission is to provide higher education, scientific research, and technological development in various fields of advanced technologies, including industrial engineering, transport engineering, automation, electronics, telecommunications, mechanical engineering, electrical engineering, and process engineering.
+
+Starting from the 2023-2024 academic year, in addition to its specialization in the Science and Technology field, ENSTA has introduced a new domain — <strong>Mathematics and Computer Science (MI)</strong> — which is highly in demand in both economic and practical sectors.
+
+<strong>ENSTA</strong> stands as a center of excellence in higher education, ensuring high-level training to serve the needs of the country's economic and industrial sectors.</p>
+  </section>
+
+  <!-- Programs (New Section inserted) -->
+  <section id="programs">
+    <h2>Programs Offered</h2>
+
+    <div class="program-box" onclick="toggleDetails('st-details')">
+      <h3>ST – Science and Technology</h3>
+      <p>Click to view details</p>
+      <div class="details" id="st-details">
+        <h4>Objectives</h4>
+        <p>Provide strong scientific and technical foundations in engineering fields such as mechanics, electronics, and renewable energy. Prepare students to solve complex industrial and technological challenges.</p>
+
+        <h4>Prerequisites</h4>
+        <p>Solid knowledge in mathematics, physics, and computer science. Motivation for problem-solving and innovation in applied sciences.</p>
+
+        <h4>Specializations</h4>
+        <ul>
+          <li>Mechanical and Energy Engineering</li>
+          <li>Renewable Energy and Energy Storage</li>
+          <li>Telecommunications and Networks</li>
+          <li>Automation and Industrial Computing</li>
+          <li>Management and Industrial Maintenance</li>
+          <li>Embedded Systems</li>
+        </ul>
+
+        <h4>Career Opportunities</h4>
+        <p>Graduates can work as engineers in industries such as energy, telecommunications, automotive, robotics, and manufacturing, or continue to Master's and Ph.D. studies.</p>
+      </div>
+    </div>
+
+    <div class="program-box" onclick="toggleDetails('mi-details')">
+      <h3>MI – Mathematics and Informatics</h3>
+      <p>Click to view details</p>
+      <div class="details" id="mi-details">
+        <h4>Objectives</h4>
+        <p>Develop expertise in computer science and applied mathematics with a focus on Artificial Intelligence and Cybersecurity. Train students to analyze, model, and secure complex digital systems.</p>
+
+        <h4>Prerequisites</h4>
+        <p>Strong background in mathematics and algorithms. Interest in data science, AI, and digital innovation.</p>
+
+        <h4>Specializations</h4>
+        <ul>
+          <li>Artificial Intelligence and Applications</li>
+          <li>Cybersecurity</li>
+        </ul>
+
+        <h4>Career Opportunities</h4>
+        <p>Graduates can pursue careers as data scientists, AI engineers, cybersecurity analysts, or researchers in tech companies and research institutions.</p>
+      </div>
+    </div>
+  </section>
+  
+<!-- Research -->
+  <section id="research">
+    <h2>Research & Innovation</h2>
+    <p class="research-intro">ENSTA Algiers promotes applied research in strategic technological fields, driving innovation and technological advancement for Algeria's future.</p>
+    
+    <div class="research-domains">
+      <div class="domain-card">
+        <div class="domain-icon">🤖</div>
+        <h3 class="domain-title">Robotics and Intelligent Systems</h3>
+        <p class="domain-description">Development of autonomous robotic systems and AI-powered solutions for industry 4.0 and smart applications.</p>
+        <ul class="projects-list">
+          <li>Autonomous surveillance drones</li>
+          <li>Collaborative industrial robots</li>
+          <li>Computer vision systems</li>
+          <li>Embedded AI for mobile robotics</li>
+        </ul>
+        <a href="#" class="research-btn">View Projects</a>
+      </div>
+
+      <div class="domain-card">
+        <div class="domain-icon">⚡</div>
+        <h3 class="domain-title">Embedded Electronics</h3>
+        <p class="domain-description">Design of embedded electronic systems for critical applications in automotive, aerospace, and IoT.</p>
+        <ul class="projects-list">
+          <li>Electronic boards for automotive</li>
+          <li>Industrial IoT systems</li>
+          <li>Power electronics</li>
+          <li>FPGA and ASIC design</li>
+        </ul>
+        <a href="#" class="research-btn">View Projects</a>
+      </div>
+
+      <div class="domain-card">
+        <div class="domain-icon">🔬</div>
+        <h3 class="domain-title">Nanotechnology and Advanced Materials</h3>
+        <p class="domain-description">Research on innovative materials and nanotechnological applications for aerospace, energy, and healthcare.</p>
+        <ul class="projects-list">
+          <li>Smart composite materials</li>
+          <li>Biomedical nanosensors</li>
+          <li>Functional coatings</li>
+          <li>Materials for renewable energy</li>
+        </ul>
+        <a href="#" class="research-btn">View Projects</a>
+      </div>
+
+      <div class="domain-card">
+        <div class="domain-icon">🛡️</div>
+        <h3 class="domain-title">Cybersecurity and Big Data</h3>
+        <p class="domain-description">Protection of information systems and analysis of massive data for critical infrastructure and enterprises.</p>
+        <ul class="projects-list">
+          <li>Post-quantum cryptography</li>
+          <li>Critical infrastructure security</li>
+          <li>Predictive Big Data analytics</li>
+          <li>Blockchain and distributed security</li>
+        </ul>
+        <a href="#" class="research-btn">View Projects</a>
+      </div>
+    </div>
+
+    <div class="research-achievements">
+      <h2 style="text-align: center; color: white; margin-bottom: 40px;">Our Research Achievements</h2>
+      <div class="achievements-grid">
+        <div class="achievement-item">
+          <h3>15+</h3>
+          <p>Active Research Projects</p>
+        </div>
+        <div class="achievement-item">
+          <h3>8</h3>
+          <p>Patents Filed</p>
+        </div>
+        <div class="achievement-item">
+          <h3>50+</h3>
+          <p>Scientific Publications</p>
+        </div>
+        <div class="achievement-item">
+          <h3>12</h3>
+          <p>Industrial Partners</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="research-teams">
+      <h2 style="text-align: center; margin-bottom: 40px;">Research Teams</h2>
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="member-photo"></div>
+          <div class="member-name">Pr. Ahmed Bensalah</div>
+          <div class="member-role">Robotics Team Leader</div>
+          <p>Specialist in autonomous systems</p>
+        </div>
+        <div class="team-member">
+          <div class="member-photo"></div>
+          <div class="member-name">Dr. Leila Merabet</div>
+          <div class="member-role">Electronics Team Leader</div>
+          <p>Expert in embedded systems</p>
+        </div>
+        <div class="team-member">
+          <div class="member-photo"></div>
+          <div class="member-name">Pr. Karim Djelloul</div>
+          <div class="member-role">Nanotech Team Leader</div>
+          <p>Specialist in advanced materials</p>
+        </div>
+        <div class="team-member">
+          <div class="member-photo"></div>
+          <div class="member-name">Dr. Samira Khelifi</div>
+          <div class="member-role">Cybersecurity Team Leader</div>
+          <p>Expert in network security</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="research-news">
+      <h2 style="margin-bottom: 30px;">Research News</h2>
+      <div class="news-item">
+        <div class="news-date">March 15, 2024</div>
+        <h3>New Project Funded by Ministry</h3>
+        <p>Launch of a research project on autonomous drones for precision agriculture.</p>
+        <a href="#" class="research-btn">Read More</a>
+      </div>
+      <div class="news-item">
+        <div class="news-date">February 28, 2024</div>
+        <h3>Publication in Nature Materials</h3>
+        <p>Our nanotechnology team publishes a major discovery on self-healing materials.</p>
+        <a href="#" class="research-btn">Read More</a>
+      </div>
+      <div class="news-item">
+        <div class="news-date">February 10, 2024</div>
+        <h3>Partnership with Airbus</h3>
+        <p>Signing of a collaboration agreement for the development of critical embedded systems.</p>
+        <a href="#" class="research-btn">Read More</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Student Life -->
+  <section id="student">
+    <h2>Student Life</h2>
+    <p>Life at ENSTA Algiers is dynamic and filled with opportunities for creativity and teamwork.</p>
+    <div class="club-logos">
+      <div>
+        <img src="images/club-robotique.png" alt="PlugIn Club">
+        <p><strong>Club PlugIn</strong><br>President: HAMMADI Mohamed<br>Scientific / Technological<br>Email: plugin@ensta.edu.dz</p>
+      </div>
+      <div>
+        <img src="images/club-innovation.png" alt="Algenius Club">
+        <p><strong>Club Algenius</strong><br>Scientific Domain<br>Email: algenius@ensta.edu.dz</p>
+      </div>
+      <div>
+        <img src="images/club-culture.png" alt="Light Club">
+        <p><strong>Light Club</strong><br>President: SARI Mohammed Islam<br>Cultural Domain<br>Email: lightclub@ensta.edu.dz</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admissions -->
+  <section id="admissions">
+    <h2>Admissions</h2>
+    <p>Admissions to ENSTA Algiers are based on national competitive exams and academic excellence. Passionate students in science and technology are welcome to apply.</p>
+    <p><strong>2025 Calendar:</strong><br>
+      • Applications open: May 2025<br>
+      • Results: July 2025<br>
+      • Academic Year begins: September 2025</p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p><strong>Address:</strong> Dergana, Algiers, Algeria</p>
+    <p><strong>Phone:</strong> +213 21 45 67 89</p>
+    <p><strong>Email:</strong> contact@ensta-alger.dz</p>
+    <p>Follow us on <a href="#">Facebook</a> | <a href="#">LinkedIn</a> | <a href="#">Instagram</a></p>
+
+    <div class="map-container">
+      <iframe 
+        src="https://www.google.com/maps?q=36.77647940495774,3.258852767411549&z=15&output=embed"
+        width="100%" height="300" style="border:0;" allowfullscreen loading="lazy">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <h2>Student Testimonials</h2>
+    <div class="testimonials">
+      <div class="testimonial">
+        <p>"Studying at ENSTA Algiers gave me the tools to think critically and lead with innovation."</p>
+        <strong>— Amina, MI Student</strong>
+      </div>
+      <div class="testimonial">
+        <p>"The research projects and clubs helped me grow as both an engineer and a leader."</p>
+        <strong>— Yacine, Robotics Club Member</strong>
+      </div>
+      <div class="testimonial">
+        <p>"ENSTA is not just a school — it's a community that pushes you to achieve excellence."</p>
+        <strong>— Lynda, Cybersecurity Student</strong>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 ENSTA Algiers — All rights reserved.
+  </footer>
+
+  <script>
+    function showSection(id, element) {
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => section.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+
+      const links = document.querySelectorAll('nav a');
+      links.forEach(link => link.classList.remove('active'));
+      element.classList.add('active');
+    }
+
+    function toggleDetails(id) {
+      const el = document.getElementById(id);
+      el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>
