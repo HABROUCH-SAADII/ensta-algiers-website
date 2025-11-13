@@ -1,16 +1,16 @@
-# ENSTA Algiers Website
+# Site Web ENSTA Alger
 
-A modern, responsive website for the National Higher School of Advanced Technology in Algiers.
+Site web responsive pour l'École Nationale Supérieure de Technologie Avancée d'Alger.
 
-. Features
-- Academic programs (Science & Technology, Mathematics & Informatics)
-- Research & Innovation sections
-- Student life and clubs
-- Responsive design for all devices
+## Fonctionnalités
+- Programmes académiques (Sciences & Technologie, Mathématiques & Informatique)
+- Sections Recherche & Innovation  
+- Vie étudiante et clubs
+- Design responsive pour tous les appareils
 
-. Technologies
+## Technologies
 - HTML5
-- CSS3  
+- CSS3
 - JavaScript
 
-. Project Structure
+## Structure du Projet
